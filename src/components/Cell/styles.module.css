@@ -1,0 +1,107 @@
+.wrapper {
+    position: relative;
+    line-height: 0px;
+}
+
+.wrapperPrice {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+}
+
+.cell:hover {
+    cursor: pointer;
+}
+
+.cell:hover path {
+    stroke: #ff8b37;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.currentCell {
+    color: #ff8b37;
+}
+.currentCell path {
+    stroke: #ff8b37;
+    transition: 0.3s;
+}
+
+.prevCell {
+    color: #d0d0d8;
+}
+.prevCell path {
+    stroke: #d0d0d8;
+    transition: 0.3s;
+}
+
+.wrapper:hover .cell::before,
+.cell::after {
+    background-color: #ff8b37;
+}
+
+.cell::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    margin-top: -0.5px;
+    background-color: #d0d0d8;
+    z-index: 1;
+}
+
+.cellAnswer {
+    position: relative;
+}
+
+.cellAnswer::before,
+.cellAnswer::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 17px;
+    height: 1px;
+    margin-top: -0.5px;
+    background-color: #d0d0d8;
+}
+.cellAnswer::before {
+    left: -16px;
+}
+
+.cellAnswer::after {
+    right: -16px;
+}
+
+.backgroundCell {
+    position: relative;
+    z-index: 2;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 9%;
+    z-index: 3;
+}
+
+.contentPrice {
+    justify-content: center;
+}
+
+.prefix {
+    color: #ff8b37;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.text {
+}

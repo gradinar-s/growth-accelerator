@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import WelcomeScreen from "./screens/WelcomeScreen/WelcomeScreen";
+import GameScreen from "./screens/GameScreen/GameScreen";
+import GameOverScreen from "./screens/GameOverScreen/GameOverScreen";
+import { GameContext } from "./context/context";
+import "./App.css";
 
 function App() {
+  const [score, setScore] = useState();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GameContext.Provider value={{ score, setScore }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<WelcomeScreen />} />
+          <Route path="/game" element={<GameScreen />} />
+          {score && <Route path="/game-over" element={<GameOverScreen />} />}
+          <Route path="*" element={<div>404</div>} />
+        </Routes>
+      </BrowserRouter>
+    </GameContext.Provider>
   );
 }
 
