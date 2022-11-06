@@ -3,7 +3,8 @@ export const config = {
   items: [
     {
       id: 0,
-      question: "In the UK, the abbreviation NHS stands for National what Service?",
+      question:
+        "In the UK, the abbreviation NHS stands for National what Service?",
       answerOptions: [
         { text: "Humanity", id: 0 },
         { text: "Health", id: 1 },
@@ -13,7 +14,8 @@ export const config = {
     },
     {
       id: 1,
-      question: "Which Disney character famously leaves a glass slipper behind at a royal ball?",
+      question:
+        "Which Disney character famously leaves a glass slipper behind at a royal ball?",
       answerOptions: [
         { text: "Pocahontas", id: 0 },
         { text: "Sleeping Beauty", id: 1 },
