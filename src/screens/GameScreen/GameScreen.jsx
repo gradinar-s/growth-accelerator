@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { config, rightAnswers } from "../../#config";
+import { config, rightAnswers } from "../../config";
 import Cell from "../../components/Cell/Cell";
 import { GameContext } from "../../context/context";
 import letters from "../../helpers/letters";
