@@ -4,14 +4,10 @@ import { BackgroundCellProps } from "./types";
 const DEFAULT_WIDTH = 390;
 const DEFAULT_HEIGHT = 72;
 
-const BackgroundCell: React.FC<Partial<BackgroundCellProps>> = ({
-  className,
-  width = DEFAULT_WIDTH,
-  height = DEFAULT_HEIGHT,
-}) => (
+const BackgroundCell: React.FC<Partial<BackgroundCellProps>> = ({ className, width, height }) => (
   <svg
-    width={width}
-    height={height}
+    width={width ?? DEFAULT_WIDTH}
+    height={height ?? DEFAULT_HEIGHT}
     viewBox={`0 0 ${DEFAULT_WIDTH} ${DEFAULT_HEIGHT}`}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
