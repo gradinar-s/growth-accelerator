@@ -1,0 +1,10 @@
+.cells {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    overflow: auto;
+}
+
+.cells > div {
+    margin: 0 0px 8px 0px;
+}

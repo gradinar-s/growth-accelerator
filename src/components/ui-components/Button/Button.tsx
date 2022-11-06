@@ -1,7 +1,8 @@
 import React from "react";
+import { ButtonProps } from "./types";
 import styles from "./styles.module.css";
 
-const Button = ({ label, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ label, ...rest }) => {
   return (
     <button className={styles.button} {...rest}>
       {label}

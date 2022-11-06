@@ -1,26 +1,27 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { config, rightAnswers } from "../../config";
-import Cell from "../../components/Cell/Cell";
 import { GameContext } from "../../context/context";
-import letters from "../../helpers/letters";
 import { formatCurrency, getPrizesList } from "../../helpers/utils";
 import routePaths from "../../routes/routePaths";
+import PricesList from "../../components/application-components/PricesList/PricesList";
+import QuestionAnswer from "../../components/application-components/QuestionAnswer/QuestionAnswer";
+import { currentItemType } from "./types";
 import styles from "./styles.module.css";
 
 const initialItem = config.items[0];
-const initialPrize = config.startPrize;
 const initialScore = formatCurrency(0);
+const initialPrize = config.startPrize;
 const itemsCount = config.items.length;
 
 const prizesList = getPrizesList(itemsCount, initialPrize);
 
-const GameScreen = () => {
+const GameScreen: React.FC = () => {
   const navigate = useNavigate();
   const { setScore } = useContext(GameContext);
 
-  const [currentItem, setCurrentItem] = useState({});
-  const [prizes, setPrizes] = useState([]);
+  const [currentItem, setCurrentItem] = useState<currentItemType | null>(null);
+  const [prizes, setPrizes] = useState<Array<string>>([]);
 
   useEffect(() => {
     setCurrentItem(initialItem);
@@ -28,15 +29,15 @@ const GameScreen = () => {
     setScore(initialScore);
 
     return () => {
-      setCurrentItem({});
+      setCurrentItem(null);
       setPrizes([]);
     };
   }, []);
 
   // In a real application, the function makes a request for the correct answer
-  const checkAnswer = (id) => rightAnswers[currentItem.id] === id;
+  const checkAnswer = (id: number) => rightAnswers[currentItem?.id] === id;
 
-  const handleAnswer = (id) => {
+  const handleAnswer = (id: number) => {
     const isAnswerTrue = checkAnswer(id);
     const isLastQuestion = currentItem.id === itemsCount - 1;
 
@@ -58,31 +59,14 @@ const GameScreen = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.gameBlock}>
-        <h1 className={styles.question}>{currentItem?.question}</h1>
-        <div className={styles.answerOptions}>
-          {currentItem?.answerOptions?.map((i) => (
-            <Cell
-              type="answer"
-              text={i.text}
-              prefix={letters[i.id].toUpperCase()}
-              onClick={() => handleAnswer(i.id)}
-            />
-          ))}
-        </div>
+        <QuestionAnswer
+          question={currentItem?.question}
+          answers={currentItem?.answerOptions}
+          handleAnswer={handleAnswer}
+        />
       </div>
       <div className={styles.resultBlock}>
-        <div className={styles.cells}>
-          {prizes.map((i, index) => (
-            <Cell
-              text={i}
-              width={240}
-              height={40}
-              type="price"
-              isCurrent={currentItem.id === index}
-              isPrev={currentItem.id > index}
-            />
-          ))}
-        </div>
+        <PricesList prizes={prizes} currentQuestionId={currentItem?.id} />
       </div>
     </div>
   );

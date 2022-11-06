@@ -1,0 +1,58 @@
+.wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    line-height: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Current cell styles */
+.currentCell {
+    color: #ff8b37;
+}
+
+.currentCell path {
+    stroke: #ff8b37;
+    transition: 0.3s;
+}
+
+/* Previous cell styles */
+.previousCell {
+    color: #d0d0d8;
+}
+.previousCell path {
+    stroke: #d0d0d8;
+    transition: 0.3s;
+}
+
+/* Long line of the cell */
+.cell::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    margin-top: -0.5px;
+    background-color: #d0d0d8;
+    z-index: 1;
+}
+
+.backgroundCell {
+    position: relative;
+    z-index: 2;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 9%;
+    z-index: 3;
+}
