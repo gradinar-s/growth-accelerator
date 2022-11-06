@@ -1,0 +1,55 @@
+.wrapper {
+    position: relative;
+    line-height: 0px;
+}
+
+/* On hover styles  */
+.cell:hover {
+    cursor: pointer;
+}
+.cell:hover path {
+    stroke: #ff8b37;
+    transition: 0.3s;
+}
+
+/* Sidelines of the cell */
+.cell::before,
+.cell::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 17px;
+    height: 1px;
+    margin-top: -0.5px;
+    background-color: #d0d0d8;
+}
+.cell::before {
+    left: -16px;
+}
+.cell::after {
+    right: -16px;
+}
+
+/* Change the color of sidelines on hover to the cell */
+.wrapper:hover .cell::before,
+.wrapper:hover .cell::after {
+    background-color: #ff8b37;
+}
+
+/* Content of the cell */
+.content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 9%;
+    z-index: 3;
+}
+.prefix {
+    color: #ff8b37;
+    font-weight: 600;
+    margin-right: 8px;
+}

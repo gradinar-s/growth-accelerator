@@ -1,0 +1,12 @@
+.question {
+    font-size: 32px;
+}
+
+.answerOptions {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.answerOptions > div {
+    margin: 0 16px 32px 16px;
+}
