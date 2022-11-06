@@ -34,7 +34,8 @@
   "lint-staged": {
     "src/**/*.{js, jsx}": [
       "prettier --write",
-      "eslint"
+      "eslint",
+      "git add"
     ]
   },
   "browserslist": {
