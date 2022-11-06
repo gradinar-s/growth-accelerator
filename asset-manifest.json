@@ -1,16 +1,14 @@
 {
   "files": {
-    "main.css": "/growth-accelerator/static/css/main.d8577174.css",
-    "main.js": "/growth-accelerator/static/js/main.cf70094a.js",
-    "static/js/787.817d3087.chunk.js": "/growth-accelerator/static/js/787.817d3087.chunk.js",
+    "main.css": "/growth-accelerator/static/css/main.61800088.css",
+    "main.js": "/growth-accelerator/static/js/main.f0d09f04.js",
     "static/media/welcomeScreen.svg": "/growth-accelerator/static/media/welcomeScreen.a2492ddf01ea1d716982db01ef208be1.svg",
     "index.html": "/growth-accelerator/index.html",
-    "main.d8577174.css.map": "/growth-accelerator/static/css/main.d8577174.css.map",
-    "main.cf70094a.js.map": "/growth-accelerator/static/js/main.cf70094a.js.map",
-    "787.817d3087.chunk.js.map": "/growth-accelerator/static/js/787.817d3087.chunk.js.map"
+    "main.61800088.css.map": "/growth-accelerator/static/css/main.61800088.css.map",
+    "main.f0d09f04.js.map": "/growth-accelerator/static/js/main.f0d09f04.js.map"
   },
   "entrypoints": [
-    "static/css/main.d8577174.css",
-    "static/js/main.cf70094a.js"
+    "static/css/main.61800088.css",
+    "static/js/main.f0d09f04.js"
   ]
 }
