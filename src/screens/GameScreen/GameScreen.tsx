@@ -6,6 +6,8 @@ import { formatCurrency, getPrizesList } from "../../helpers/utils";
 import routePaths from "../../routes/routePaths";
 import PricesList from "../../components/application-components/PricesList/PricesList";
 import QuestionAnswer from "../../components/application-components/QuestionAnswer/QuestionAnswer";
+import Cross from "../../components/ui-components/Icons/Cross/Cross";
+import Burder from "../../components/ui-components/Icons/Burger/Burger";
 import { currentItemType } from "./types";
 import styles from "./styles.module.css";
 
@@ -22,15 +24,31 @@ const GameScreen: React.FC = () => {
 
   const [currentItem, setCurrentItem] = useState<currentItemType | null>(null);
   const [prizes, setPrizes] = useState<Array<string>>([]);
+  const [width, setWidth] = useState<number>(window.innerWidth);
+  const [isShowResult, setShowResult] = useState<boolean>(false);
+
+  // Mobile settings
+  const isMobile = width < 768;
+  const resultBlockMobile = isMobile && isShowResult ? styles.resultBlockModile : "";
+
+  const handleWindowSize = () => setWidth(window.innerWidth);
+
+  const handleResultBlock = () => setShowResult(!isShowResult);
 
   useEffect(() => {
     setCurrentItem(initialItem);
     setPrizes(prizesList);
     setScore(initialScore);
 
+    // Handle window size
+    window.addEventListener("resize", handleWindowSize);
+
     return () => {
       setCurrentItem(null);
       setPrizes([]);
+
+      // Remove listener
+      window.removeEventListener("resize", handleWindowSize);
     };
   }, []);
 
@@ -58,6 +76,11 @@ const GameScreen: React.FC = () => {
 
   return (
     <div className={styles.wrapper}>
+      {isMobile && (
+        <div className={styles.navigate} onClick={handleResultBlock}>
+          {isShowResult ? <Cross /> : <Burder />}
+        </div>
+      )}
       <div className={styles.gameBlock}>
         <QuestionAnswer
           question={currentItem?.question}
@@ -65,7 +88,7 @@ const GameScreen: React.FC = () => {
           handleAnswer={handleAnswer}
         />
       </div>
-      <div className={styles.resultBlock}>
+      <div className={`${styles.resultBlock} ${resultBlockMobile}`}>
         <PricesList prizes={prizes} currentQuestionId={currentItem?.id} />
       </div>
     </div>
