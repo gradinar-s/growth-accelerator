@@ -1,5 +1,6 @@
 .wrapper {
     position: relative;
+    margin: 0 16px 32px 16px;
     line-height: 0px;
 }
 
@@ -52,4 +53,34 @@
     color: #ff8b37;
     font-weight: 600;
     margin-right: 8px;
+}
+
+@media (max-width: 767px) {
+    .wrapper {
+        margin: 0 0 16px 0;
+    }
+
+    .cell {
+        display: flex;
+        justify-content: center;
+    }
+
+    .cell svg {
+        width: 288px;
+        height: 56px;
+        z-index: 3;
+    }
+
+    .cell::after {
+        display: none;
+    }
+
+    .cell::before {
+        width: 100%;
+        left: 0;
+    }
+
+    .content {
+        justify-content: center;
+    }
 }
