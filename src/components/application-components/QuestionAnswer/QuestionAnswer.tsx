@@ -5,7 +5,7 @@ import { QuestionAnswerPropsT } from "./types";
 import styles from "./styles.module.css";
 
 const QuestionAnswer: React.FC<QuestionAnswerPropsT> = ({ question, answers, handleAnswer }) => (
-  <>
+  <div className={styles.wrapper}>
     <h1 className={styles.question}>{question}</h1>
     <div className={styles.answerOptions}>
       {answers?.map((i) => (
@@ -17,7 +17,7 @@ const QuestionAnswer: React.FC<QuestionAnswerPropsT> = ({ question, answers, han
         />
       ))}
     </div>
-  </>
+  </div>
 );
 
 export default QuestionAnswer;
